@@ -20,11 +20,13 @@ namespace locadoradeveiculos.Models
         [Required(ErrorMessage = "Campo funcionário é obrigatório!")]
         [Display(Name = "Funcionário: ")]
         [ForeignKey("id_funcionario")]
+        public int funcionarioid { get; set; }
         public Funcionario funcionario { get; set; }
 
         [Required(ErrorMessage = "Campo cliente é obrigatório!")]
         [Display(Name = "Cliente: ")]
         [ForeignKey("id_cliente")]
+        public int clienteid { get; set; }
         public Cliente cliente { get; set; }
 
         [Required(ErrorMessage = "Campo veículo é obrigatório!")]

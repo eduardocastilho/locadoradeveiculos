@@ -21,7 +21,8 @@ namespace locadoradeveiculos.Controllers
         // GET: Alugueis
         public async Task<IActionResult> Index()
         {
-              return View(await _context.alugueis.ToListAsync());
+            var contexto = _context.alugueis.Include(a => a.cliente).Include(a => a.funcionario);
+            return View(await contexto.ToListAsync());
         }
 
         // GET: Alugueis/Details/5
@@ -33,6 +34,8 @@ namespace locadoradeveiculos.Controllers
             }
 
             var aluguel = await _context.alugueis
+                .Include(a => a.cliente)
+                .Include(a => a.funcionario)
                 .FirstOrDefaultAsync(m => m.id == id);
             if (aluguel == null)
             {
@@ -45,6 +48,8 @@ namespace locadoradeveiculos.Controllers
         // GET: Alugueis/Create
         public IActionResult Create()
         {
+            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "cnh");
+            ViewData["funcionarioid"] = new SelectList(_context.funcionarios, "id", "id");
             return View();
         }
 
@@ -53,7 +58,7 @@ namespace locadoradeveiculos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,dataAluguel")] Aluguel aluguel)
+        public async Task<IActionResult> Create([Bind("id,dataAluguel,funcionarioid,clienteid")] Aluguel aluguel)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +66,8 @@ namespace locadoradeveiculos.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "cnh", aluguel.clienteid);
+            ViewData["funcionarioid"] = new SelectList(_context.funcionarios, "id", "id", aluguel.funcionarioid);
             return View(aluguel);
         }
 
@@ -77,6 +84,8 @@ namespace locadoradeveiculos.Controllers
             {
                 return NotFound();
             }
+            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "cnh", aluguel.clienteid);
+            ViewData["funcionarioid"] = new SelectList(_context.funcionarios, "id", "id", aluguel.funcionarioid);
             return View(aluguel);
         }
 
@@ -85,7 +94,7 @@ namespace locadoradeveiculos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,dataAluguel")] Aluguel aluguel)
+        public async Task<IActionResult> Edit(int id, [Bind("id,dataAluguel,funcionarioid,clienteid")] Aluguel aluguel)
         {
             if (id != aluguel.id)
             {
@@ -112,6 +121,8 @@ namespace locadoradeveiculos.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "cnh", aluguel.clienteid);
+            ViewData["funcionarioid"] = new SelectList(_context.funcionarios, "id", "id", aluguel.funcionarioid);
             return View(aluguel);
         }
 
@@ -124,6 +135,8 @@ namespace locadoradeveiculos.Controllers
             }
 
             var aluguel = await _context.alugueis
+                .Include(a => a.cliente)
+                .Include(a => a.funcionario)
                 .FirstOrDefaultAsync(m => m.id == id);
             if (aluguel == null)
             {

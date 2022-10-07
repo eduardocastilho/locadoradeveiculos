@@ -16,6 +16,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.dataAluguel)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.funcionario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cliente)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -24,6 +30,12 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.dataAluguel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.funcionario.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cliente.cnh)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |

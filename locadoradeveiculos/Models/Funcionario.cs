@@ -13,6 +13,7 @@ namespace locadoradeveiculos.Models
         public int id { get; set; }
 
         [StringLength(35)]
+        [Required(ErrorMessage = "Campo nome é obrigatório!")]
         [Display(Name = "Nome: ")]
         public String nome { get; set; }
     }
