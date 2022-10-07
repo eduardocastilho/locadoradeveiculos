@@ -45,6 +45,16 @@ namespace locadoradeveiculos.Controllers
         // GET: Clientes/Create
         public IActionResult Create()
         {
+            var estado = Enum.GetValues(typeof(Estado))
+                .Cast<Estado>()
+                .Select(e => new SelectListItem
+                {
+                    Value = e.ToString(),
+                    Text = e.ToString()
+                });
+
+            ViewBag.bagEstado = estado;
+
             return View();
         }
 
@@ -78,6 +88,7 @@ namespace locadoradeveiculos.Controllers
                 return NotFound();
             }
             return View(cliente);
+
         }
 
         // POST: Clientes/Edit/5

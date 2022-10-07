@@ -39,7 +39,7 @@ namespace locadoradeveiculos.Models
         public Estado estado { get; set; }
 
         [StringLength(25)]
-        [Display(Name = "Cidade: ")]
+        [Display(Name = "CEP: ")]
         public String cep { get; set; }
 
     }
