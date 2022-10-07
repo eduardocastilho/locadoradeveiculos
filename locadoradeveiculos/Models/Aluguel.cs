@@ -32,6 +32,7 @@ namespace locadoradeveiculos.Models
         [Required(ErrorMessage = "Campo veículo é obrigatório!")]
         [Display(Name = "Veículo: ")]
         [ForeignKey("id_veiculo")]
+        public int veiculoid { get; set; }
         public Veiculo veiculo { get; set; }
     }
 }

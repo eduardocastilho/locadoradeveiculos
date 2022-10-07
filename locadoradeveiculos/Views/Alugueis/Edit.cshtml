@@ -30,6 +30,11 @@
                 <span asp-validation-for="clienteid" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="veiculoid" class="control-label"></label>
+                <select asp-for="veiculoid" class="form-control" asp-items="ViewBag.veiculoid"></select>
+                <span asp-validation-for="veiculoid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

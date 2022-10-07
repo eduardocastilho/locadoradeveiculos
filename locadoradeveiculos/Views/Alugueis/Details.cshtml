@@ -21,13 +21,19 @@
             @Html.DisplayNameFor(model => model.funcionario)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.funcionario.id)
+            @Html.DisplayFor(model => model.funcionario.nome)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.cliente)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.cliente.cnh)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.veiculo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.veiculo.placa)
         </dd>
     </dl>
 </div>
