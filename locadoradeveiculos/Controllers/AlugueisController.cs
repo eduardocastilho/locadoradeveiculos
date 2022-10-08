@@ -87,7 +87,7 @@ namespace locadoradeveiculos.Controllers
             {
                 return NotFound();
             }
-            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "cnh", aluguel.clienteid);
+            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "nome", aluguel.clienteid);
             ViewData["funcionarioid"] = new SelectList(_context.funcionarios, "id", "nome", aluguel.funcionarioid);
             ViewData["veiculoid"] = new SelectList(_context.veiculos, "id", "placa", aluguel.veiculoid);
             return View(aluguel);
