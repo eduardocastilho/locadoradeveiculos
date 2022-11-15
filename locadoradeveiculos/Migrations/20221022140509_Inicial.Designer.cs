@@ -12,8 +12,8 @@ using locadoradeveiculos.Models;
 namespace locadoradeveiculos.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20221007132017_MudancaFunc")]
-    partial class MudancaFunc
+    [Migration("20221022140509_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,7 +41,7 @@ namespace locadoradeveiculos.Migrations
                     b.Property<int>("funcionarioid")
                         .HasColumnType("int");
 
-                    b.Property<int>("id_veiculo")
+                    b.Property<int>("veiculoid")
                         .HasColumnType("int");
 
                     b.HasKey("id");
@@ -50,7 +50,7 @@ namespace locadoradeveiculos.Migrations
 
                     b.HasIndex("funcionarioid");
 
-                    b.HasIndex("id_veiculo");
+                    b.HasIndex("veiculoid");
 
                     b.ToTable("Alugueis");
                 });
@@ -155,7 +155,7 @@ namespace locadoradeveiculos.Migrations
 
                     b.HasOne("locadoradeveiculos.Models.Veiculo", "veiculo")
                         .WithMany()
-                        .HasForeignKey("id_veiculo")
+                        .HasForeignKey("veiculoid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

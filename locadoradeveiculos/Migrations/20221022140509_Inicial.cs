@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace locadoradeveiculos.Migrations
 {
-    public partial class Anotacao : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,7 +34,7 @@ namespace locadoradeveiculos.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nome = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: true)
+                    nome = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,47 +64,47 @@ namespace locadoradeveiculos.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     dataAluguel = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    id_funcionario = table.Column<int>(type: "int", nullable: false),
-                    id_cliente = table.Column<int>(type: "int", nullable: false),
-                    id_veiculo = table.Column<int>(type: "int", nullable: false)
+                    funcionarioid = table.Column<int>(type: "int", nullable: false),
+                    clienteid = table.Column<int>(type: "int", nullable: false),
+                    veiculoid = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Alugueis", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Alugueis_Clientes_id_cliente",
-                        column: x => x.id_cliente,
+                        name: "FK_Alugueis_Clientes_clienteid",
+                        column: x => x.clienteid,
                         principalTable: "Clientes",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Alugueis_Funcionarios_id_funcionario",
-                        column: x => x.id_funcionario,
+                        name: "FK_Alugueis_Funcionarios_funcionarioid",
+                        column: x => x.funcionarioid,
                         principalTable: "Funcionarios",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Alugueis_Veiculos_id_veiculo",
-                        column: x => x.id_veiculo,
+                        name: "FK_Alugueis_Veiculos_veiculoid",
+                        column: x => x.veiculoid,
                         principalTable: "Veiculos",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Alugueis_id_cliente",
+                name: "IX_Alugueis_clienteid",
                 table: "Alugueis",
-                column: "id_cliente");
+                column: "clienteid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Alugueis_id_funcionario",
+                name: "IX_Alugueis_funcionarioid",
                 table: "Alugueis",
-                column: "id_funcionario");
+                column: "funcionarioid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Alugueis_id_veiculo",
+                name: "IX_Alugueis_veiculoid",
                 table: "Alugueis",
-                column: "id_veiculo");
+                column: "veiculoid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
