@@ -16,3 +16,29 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.containerlogin {
+    padding-right: 3px;
+    padding-left: 3px;
+    margin: 0 auto;
+    position: center;
+    width: 80%;
+    font-family: Arial, Helvetica, sans-serif;
+    background: padding-box;
+    border-block: dotted;
+    text-align: center;
+}
+
+.containerregistro {
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: center;
+    margin: 0 auto;
+    width: 80%;
+    font-family: Arial, Helvetica, sans-serif;
+    background: padding-box;
+    border-block: dotted;
+}
