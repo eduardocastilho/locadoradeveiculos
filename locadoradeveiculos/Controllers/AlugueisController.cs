@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using locadoradeveiculos.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace locadoradeveiculos.Controllers
 {
+    [Authorize]
     public class AlugueisController : Controller
     {
         private readonly Contexto _context;

@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using locadoradeveiculos.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace locadoradeveiculos.Controllers
 {
+    [Authorize(Roles = "ADMIN")]
     public class FuncionariosController : Controller
     {
         private readonly Contexto _context;
