@@ -1,16 +1,14 @@
 ﻿@model IEnumerable<locadoradeveiculos.Models.Cliente>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Cliente";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Cliente</h1>
+<h1>Listar Clientes</h1>
 
 <p>
-    <a asp-action="Create">Cadastrar novo cliente</a>
-    <br />
-    <a asp-controller="Query" asp-action="Cliente">Listar</a>
+    <a asp-action="Pesquisa">Pesquisa</a>
 </p>
 <table class="table">
     <thead>

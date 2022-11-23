@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace locadoradeveiculos.Controllers
 {
-    [Authorize(Roles = "ADMIN")]
+    [Authorize]
     public class FuncionariosController : Controller
     {
         private readonly Contexto _context;
